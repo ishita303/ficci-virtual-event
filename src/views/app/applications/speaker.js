@@ -23,6 +23,9 @@ import { Colxx, Separator, } from '../../../components/common/CustomBootstrap';
 import ThumbnailImage from '../../../components/cards/ThumbnailImage';
 import ThumbnailLetters from '../../../components/cards/ThumbnailLetters';
 import { adminRoot } from '../../../constants/defaultValues';
+import { getCurrentUser } from '../../../helpers/Utils';
+// import { currentUser } from '../../../constants/defaultValues';
+const currentUser=getCurrentUser();
 
 const ImageListPages = () => {
   const [modalBasic, setModalBasic] = useState(false);
@@ -35,6 +38,27 @@ const ImageListPages = () => {
   const [closeAll, setCloseAll] = useState(false);
   const [modalLarge, setModalLarge] = useState(false);
   const [modalSmall, setModalSmall] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  function Addnew(props) {
+    console.log(currentUser);
+    const isAdmin = props.isAdmin;
+    if (isAdmin=="admin") {
+      return (
+    <div className="text-zero top-right-button-container">
+      <Button
+        color="primary"
+        size="lg"
+        className="top-right-button"
+        onClick={() => setModalOpen(true)}
+      >
+        <IntlMessages id="todo.add-new" />
+      </Button>{' '}
+    </div>
+  );
+    }
+    return <div />;
+  }
 
   return (
     <div style={{padding:"20px"}}>
@@ -45,37 +69,30 @@ const ImageListPages = () => {
             <h1>
             Speakers
             </h1>
-            <div className="text-zero top-right-button-container">
-              <Button
-                color="primary"
-                size="lg"
-                className="top-right-button"
-                onClick={() => setModalRight(true)}
-                >
-                <IntlMessages id="ADD NEW" />
-              </Button>
-            <Modal
-              isOpen={modalRight}
-              toggle={() => setModalRight(!modalRight)}
-              wrapClassName="modal-right"
-            >
-              <ModalHeader>Add New FAQ</ModalHeader>
-              <ModalBody>
-
-              </ModalBody>
-                <ModalFooter>
-                  <Button
-                    color="secondary"
-                    onClick={() => setModalRight(false)}
-                    align="right"
-                  >
-                    Submit
-                  </Button>
-                </ModalFooter>
-              </Modal>
-              </div>
-      <Separator className="mb-5" />
+            <Addnew isAdmin= {currentUser.role} />
       </div>
+      <div>
+      <Modal
+        isOpen={modalRight}
+        toggle={() => setModalRight(!modalRight)}
+        wrapClassName="modal-right"
+      >
+        <ModalHeader>Add New FAQ</ModalHeader>
+        <ModalBody>
+
+        </ModalBody>
+          <ModalFooter>
+            <Button
+              color="secondary"
+              onClick={() => setModalRight(false)}
+              align="right"
+            >
+              Submit
+            </Button>
+          </ModalFooter>
+        </Modal>
+        </div>
+        <Separator className="mb-5" />
       </CardTitle>
       <Row>
         <Colxx md="6" sm="6" lg="4" xxs="12">

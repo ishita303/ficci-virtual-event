@@ -23,6 +23,9 @@ import {
 } from '../../../components/common/CustomBootstrap';
 import faqData from '../../../data/faq';
 import IntlMessages from '../../../helpers/IntlMessages';
+import { getCurrentUser } from '../../../helpers/Utils';
+// import { currentUser } from '../../../constants/defaultValues';
+const currentUser=getCurrentUser();
 
 const Faq = ({match}) => {
   const [showingIndex, setShowIndex] = useState(0);
@@ -36,6 +39,26 @@ const Faq = ({match}) => {
   const [closeAll, setCloseAll] = useState(false);
   const [modalLarge, setModalLarge] = useState(false);
   const [modalSmall, setModalSmall] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  function Addnew(props) {
+    console.log(currentUser);
+    const isAdmin = props.isAdmin;
+    if (isAdmin=="admin") {
+      return (<div className="text-zero top-right-button-container">
+
+      <Button
+        color="primary"
+        size="lg"
+        className="top-right-button"
+        onClick={() => setModalOpen(true)}
+      >
+        <IntlMessages id="todo.add-new" />
+      </Button>{' '}
+    </div>);
+    }
+    return <div />;
+  }
 
   return (
     <div style={{padding:"20px"}}>
@@ -43,14 +66,7 @@ const Faq = ({match}) => {
         <Colxx xxs="12">
           <Breadcrumb heading="FAQ" match={match} />
           <div className="text-zero top-right-button-container">
-            <Button
-              color="primary"
-              size="lg"
-              className="top-right-button"
-              onClick={() => setModalRight(true)}
-              >
-              <IntlMessages id="todo.add-new" />
-            </Button>
+          <Addnew isAdmin= {currentUser.role} />
             <Modal
               isOpen={modalRight}
               toggle={() => setModalRight(!modalRight)}
