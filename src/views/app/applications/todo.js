@@ -111,7 +111,7 @@ const TodoApp = ({
     const isAdmin = props.isAdmin;
     if (isAdmin=="admin") {
       return (<div className="text-zero top-right-button-container">
-              
+
       <Button
         color="primary"
         size="lg"
@@ -172,7 +172,7 @@ const TodoApp = ({
             <h1>
               <IntlMessages id="Agenda" />
             </h1>
-            
+
             {loading && (
               <Addnew isAdmin= {currentUser.role} />
             )}

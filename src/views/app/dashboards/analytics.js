@@ -16,11 +16,11 @@ const DashboardAnalytics = ({ intl, match }) => {
     zIndex: "2",
     transform: "skew(0deg, 0deg)",
     position: "absolute",
-    width: "19.5%",
+    width: "20%",
     height: "19.91%",
-    top: "22.59%",
-    left: "44.2%"}
- 
+    top: "22.7%",
+    left: "44%"}
+
    let slido={
      display:showSlido, justifyContent: 'center', alignItems: 'center',
                     transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
@@ -42,10 +42,7 @@ const DashboardAnalytics = ({ intl, match }) => {
     return (
     <div>
      <img height="100%" width="100%" style={image1} src="https://ficci-capam.framez.sg/images/lounge.jpg" />
-
-     
-     <iframe src="https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963" allowFullScreen allow="autoplay; encrypted-media" style={vid}>      </iframe>
-     
+     <iframe src="https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963" allowFullScreen allow="autoplay; encrypted-media" style={vid} frameborder="0"></iframe>
      <img src="../../../../assets/logos/chat.png" height="100%" width="100%" style={logo}  onClick={()=>slidoToggle()}/>
      <iframe src="../applications/chat" height="100%" width="100%" style={slido}/>
     </div>

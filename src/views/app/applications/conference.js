@@ -32,16 +32,19 @@ const DefaultConference = ({ intl, match }) => {
   const image2={
     position: "relative"
    }
-   const vid={
-     display: 'block', transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
-                    top: '-19.5%',left: '29.15%',
-   }
+	 const vid={
+		cursor: "pointer",
+		zIndex: "2",
+		transform: "skew(0deg, 0deg)",
+		position: "absolute",
+		width: "50%",
+		height: "55%",
+		top: "7.7%",
+		left: "29.3%"}
     return (
     <div>
      <img height="100%" width="100%" style={image2} src="https://ficci-capam.framez.sg/images/audi3.jpg" />
-     <div style={vid}>
-       <Vimeo video="451526648" height="805px" width="720px" autoplay/>
-     </div>
+		 <iframe src="https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963" allowFullScreen allow="autoplay; encrypted-media" style={vid} frameborder="0"></iframe>
 		 <img src="../../../../assets/logos/slido.png" height="100%" width="100%" style={logo} onClick={()=>slidoToggle()}/>
 		 <iframe src="https://app.sli.do/event/e1oazdil" height="100%" width="100%" style={slido}/>
      </div>

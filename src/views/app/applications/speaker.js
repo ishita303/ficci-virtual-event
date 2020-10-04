@@ -23,6 +23,9 @@ import { Colxx, Separator, } from '../../../components/common/CustomBootstrap';
 import ThumbnailImage from '../../../components/cards/ThumbnailImage';
 import ThumbnailLetters from '../../../components/cards/ThumbnailLetters';
 import { adminRoot } from '../../../constants/defaultValues';
+import { getCurrentUser } from '../../../helpers/Utils';
+// import { currentUser } from '../../../constants/defaultValues';
+const currentUser=getCurrentUser();
 
 const ImageListPages = () => {
   const [modalBasic, setModalBasic] = useState(false);
@@ -36,6 +39,25 @@ const ImageListPages = () => {
   const [modalLarge, setModalLarge] = useState(false);
   const [modalSmall, setModalSmall] = useState(false);
 
+  function Addnew(props) {
+    console.log(currentUser);
+    const isAdmin = props.isAdmin;
+    if (isAdmin=="admin") {
+      return (<div className="text-zero top-right-button-container">
+
+      <Button
+        color="primary"
+        size="lg"
+        className="top-right-button"
+        onClick={() => setModalOpen(true)}
+      >
+        <IntlMessages id="todo.add-new" />
+      </Button>{' '}
+    </div>);
+    }
+    return <div />;
+  }
+
   return (
     <div style={{padding:"20px"}}>
       <Row>
@@ -45,15 +67,9 @@ const ImageListPages = () => {
             <h1>
             Speakers
             </h1>
-            <div className="text-zero top-right-button-container">
-              <Button
-                color="primary"
-                size="lg"
-                className="top-right-button"
-                onClick={() => setModalRight(true)}
-                >
-                <IntlMessages id="ADD NEW" />
-              </Button>
+
+            <Addnew isAdmin= {currentUser.role} />
+
             <Modal
               isOpen={modalRight}
               toggle={() => setModalRight(!modalRight)}
