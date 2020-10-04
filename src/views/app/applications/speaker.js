@@ -44,8 +44,8 @@ const ImageListPages = () => {
     console.log(currentUser);
     const isAdmin = props.isAdmin;
     if (isAdmin=="admin") {
-      return (<div className="text-zero top-right-button-container">
-
+      return (
+    <div className="text-zero top-right-button-container">
       <Button
         color="primary"
         size="lg"
@@ -54,7 +54,8 @@ const ImageListPages = () => {
       >
         <IntlMessages id="todo.add-new" />
       </Button>{' '}
-    </div>);
+    </div>
+  );
     }
     return <div />;
   }
@@ -68,31 +69,30 @@ const ImageListPages = () => {
             <h1>
             Speakers
             </h1>
-
             <Addnew isAdmin= {currentUser.role} />
-
-            <Modal
-              isOpen={modalRight}
-              toggle={() => setModalRight(!modalRight)}
-              wrapClassName="modal-right"
-            >
-              <ModalHeader>Add New FAQ</ModalHeader>
-              <ModalBody>
-
-              </ModalBody>
-                <ModalFooter>
-                  <Button
-                    color="secondary"
-                    onClick={() => setModalRight(false)}
-                    align="right"
-                  >
-                    Submit
-                  </Button>
-                </ModalFooter>
-              </Modal>
-              </div>
-      <Separator className="mb-5" />
       </div>
+      <div>
+      <Modal
+        isOpen={modalRight}
+        toggle={() => setModalRight(!modalRight)}
+        wrapClassName="modal-right"
+      >
+        <ModalHeader>Add New FAQ</ModalHeader>
+        <ModalBody>
+
+        </ModalBody>
+          <ModalFooter>
+            <Button
+              color="secondary"
+              onClick={() => setModalRight(false)}
+              align="right"
+            >
+              Submit
+            </Button>
+          </ModalFooter>
+        </Modal>
+        </div>
+        <Separator className="mb-5" />
       </CardTitle>
       <Row>
         <Colxx md="6" sm="6" lg="4" xxs="12">
