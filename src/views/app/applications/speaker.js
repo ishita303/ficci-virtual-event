@@ -38,6 +38,7 @@ const ImageListPages = () => {
   const [closeAll, setCloseAll] = useState(false);
   const [modalLarge, setModalLarge] = useState(false);
   const [modalSmall, setModalSmall] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   function Addnew(props) {
     console.log(currentUser);
