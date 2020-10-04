@@ -50,6 +50,7 @@ const trydata = async (uid) => {
 
     snapshot.forEach(doc => {
       response=doc.data();
+      return
       // console.log(response);
     });
     // const item = { uid: response.uid, title: response.name, img: response.profileimg };
@@ -76,13 +77,15 @@ function* loginWithEmailPassword({ payload }) {
     const loginUser = yield call(loginWithEmailPasswordAsync, email, password);
     if (!loginUser.message) {
       let item=null;
-      trydata(loginUser.user.uid).then(()=>{
-        item = { uid: response.uid, title: response.name, img: response.profileimg };
-        setCurrentUser(item);
+      trydata(loginUser.user.uid).then(async ()=>{
+        // console.log(response);
+        item = { uid: response.uid, title: response.name, img: response.profileimg, role: response.role };
+        await setCurrentUser(item);
         
-      }) 
-      yield put(loginUserSuccess(item));     
-      history.push(adminRoot);
+      }).then(loginUserSuccess(item).then(history.push(adminRoot))) 
+      // yield put(loginUserSuccess(item));
+      // console.log("aaya");     
+      // history.push(adminRoot);
     } else {
       yield put(loginUserError(loginUser.message));
     }
@@ -106,7 +109,8 @@ const addUserasync = async (name,uid) => {
   await firestore.collection('users').add({
     uid: uid,
     name: name,
-    profileimg: '/assets/img/profiles/l-1.jpg'
+    profileimg: '/assets/img/profiles/l-1.jpg',
+    role: "user"
   })
 }
 
@@ -145,9 +149,11 @@ export function* watchLogoutUser() {
 const logoutAsync = async (history) => {
   await auth
     .signOut()
-    .then((user) => user)
+    .then(async ()=>{
+      await setCurrentUser("");
+      history.push(adminRoot)})
     .catch((error) => error);
-  history.push(adminRoot);
+  ;
 };
 
 function* logout({ payload }) {

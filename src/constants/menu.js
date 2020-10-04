@@ -20,11 +20,11 @@ const data = [
         label: 'Agenda',
         to: `${adminRoot}/applications/todo`,
       },
-      {
-        icon: 'simple-icon-check',
-        label: 'Chat',
-        to: `${adminRoot}/applications/chat`,
-      },
+      // {
+      //   icon: 'simple-icon-check',
+      //   label: 'Chat',
+      //   to: `${adminRoot}/applications/chat`,
+      // },
       {
         icon: 'simple-icon-bubbles',
         label: 'Speakers Profile',

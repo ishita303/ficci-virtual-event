@@ -252,7 +252,8 @@ const TopNav = ({
             <DropdownToggle className="p-0" color="empty">
               <span className="name mr-1">{currentUser.title}</span>
               <span>
-                <img alt="Profile" src={currentUser.img} />
+              {console.log(currentUser)}
+                <img alt="Profile" src='/assets/img/profiles/l-1.jpg' />
               </span>
             </DropdownToggle>
             <DropdownMenu className="mt-3" right>

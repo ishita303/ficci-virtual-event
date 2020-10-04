@@ -16,23 +16,23 @@ export const localeOptions = [
 ];
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyAneOI_qA83Ojg9x7yQcDoz_56EETY1sNU",
-  authDomain: "gogo-ebcc7.firebaseapp.com",
-  databaseURL: "https://gogo-ebcc7.firebaseio.com",
-  projectId: "gogo-ebcc7",
-  storageBucket: "gogo-ebcc7.appspot.com",
-  messagingSenderId: "139486879162",
-  appId: "1:139486879162:web:b4b12ca0202679f4e71183",
-  measurementId: "G-2NBYNQ4WCL"
+  apiKey: "AIzaSyD1RagWTzPMCSH00R5URkWClhfp3cVE8r4",
+    authDomain: "ficci-d7464.firebaseapp.com",
+    databaseURL: "https://ficci-d7464.firebaseio.com",
+    projectId: "ficci-d7464",
+    storageBucket: "ficci-d7464.appspot.com",
+    messagingSenderId: "952081560690",
+    appId: "1:952081560690:web:575fcc83e70f66245dbeeb",
+    measurementId: "G-WK01QXW298"
 };
 
-export const currentUser = {
-  id: 1,
-  title: 'Ishita Jain',
-  img: '/assets/img/profiles/l-1.jpg',
-  date: 'Last seen today 15:24',
-  role: UserRole.Admin
-}
+// export const currentUser = {
+//   id: 1,
+//   title: 'Ishita Jain',
+//   img: '/assets/img/profiles/l-1.jpg',
+//   date: 'Last seen today 15:24',
+//   role: UserRole.Admin
+// }
 
 
 export const adminRoot = '/app';

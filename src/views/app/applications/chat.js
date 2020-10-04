@@ -160,7 +160,7 @@ const ChatApp = ({
       <ChatApplicationMenu activeTab={activeTab} toggleAppMenu={setActiveTab} />
     </>
   ) : (
-    <h1> Not Done </h1>
+    <div className="loading" />
   );
 };
 

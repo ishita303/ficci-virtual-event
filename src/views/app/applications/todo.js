@@ -27,6 +27,9 @@ import {
 import TodoListItem from '../../../components/applications/TodoListItem';
 import AddNewTodoModal from '../../../containers/applications/AddNewTodoModal';
 import TodoApplicationMenu from '../../../containers/applications/TodoApplicationMenu';
+import { getCurrentUser } from '../../../helpers/Utils';
+// import { currentUser } from '../../../constants/defaultValues';
+const currentUser=getCurrentUser();
 
 const getIndex = (value, arr, prop) => {
   for (let i = 0; i < arr.length; i += 1) {
@@ -103,6 +106,62 @@ const TodoApp = ({
     }
   };
 
+  function Addnew(props) {
+    console.log(currentUser);
+    const isAdmin = props.isAdmin;
+    if (isAdmin=="admin") {
+      return (<div className="text-zero top-right-button-container">
+              
+      <Button
+        color="primary"
+        size="lg"
+        className="top-right-button"
+        onClick={() => setModalOpen(true)}
+      >
+        <IntlMessages id="todo.add-new" />
+      </Button>{' '}
+      {/* <ButtonDropdown
+        isOpen={dropdownSplitOpen}
+        toggle={() => setDropdownSplitOpen(!dropdownSplitOpen)}
+      >
+        <div className="btn btn-primary btn-lg pl-4 pr-0 check-button check-all">
+          <CustomInput
+            className="custom-checkbox mb-0 d-inline-block"
+            type="checkbox"
+            id="checkAll"
+            checked={selectedItems.length >= todoItems.length}
+            onClick={() => handleChangeSelectAll()}
+            onChange={() => handleChangeSelectAll()}
+            label={
+              <span
+                className={`custom-control-label ${
+                  selectedItems.length > 0 &&
+                  selectedItems.length < todoItems.length
+                    ? 'indeterminate'
+                    : ''
+                }`}
+              />
+            }
+          />
+        </div>
+        <DropdownToggle
+          caret
+          color="primary"
+          className="dropdown-toggle-split btn-lg"
+        />
+        <DropdownMenu right>
+          <DropdownItem>
+            <IntlMessages id="todo.action" />
+          </DropdownItem>
+          <DropdownItem>
+            <IntlMessages id="todo.another-action" />
+          </DropdownItem>
+        </DropdownMenu>
+      </ButtonDropdown> */}
+    </div>);
+    }
+    return <div />;
+  }
   const { messages } = intl;
 
   return (
@@ -113,55 +172,9 @@ const TodoApp = ({
             <h1>
               <IntlMessages id="Agenda" />
             </h1>
+            
             {loading && (
-              <div className="text-zero top-right-button-container">
-                <Button
-                  color="primary"
-                  size="lg"
-                  className="top-right-button"
-                  onClick={() => setModalOpen(true)}
-                >
-                  <IntlMessages id="todo.add-new" />
-                </Button>{' '}
-                {/* <ButtonDropdown
-                  isOpen={dropdownSplitOpen}
-                  toggle={() => setDropdownSplitOpen(!dropdownSplitOpen)}
-                >
-                  <div className="btn btn-primary btn-lg pl-4 pr-0 check-button check-all">
-                    <CustomInput
-                      className="custom-checkbox mb-0 d-inline-block"
-                      type="checkbox"
-                      id="checkAll"
-                      checked={selectedItems.length >= todoItems.length}
-                      onClick={() => handleChangeSelectAll()}
-                      onChange={() => handleChangeSelectAll()}
-                      label={
-                        <span
-                          className={`custom-control-label ${
-                            selectedItems.length > 0 &&
-                            selectedItems.length < todoItems.length
-                              ? 'indeterminate'
-                              : ''
-                          }`}
-                        />
-                      }
-                    />
-                  </div>
-                  <DropdownToggle
-                    caret
-                    color="primary"
-                    className="dropdown-toggle-split btn-lg"
-                  />
-                  <DropdownMenu right>
-                    <DropdownItem>
-                      <IntlMessages id="todo.action" />
-                    </DropdownItem>
-                    <DropdownItem>
-                      <IntlMessages id="todo.another-action" />
-                    </DropdownItem>
-                  </DropdownMenu>
-                </ButtonDropdown> */}
-              </div>
+              <Addnew isAdmin= {currentUser.role} />
             )}
             <Breadcrumb match={match} />
           </div>
