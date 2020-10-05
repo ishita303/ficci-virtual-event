@@ -39,7 +39,7 @@ let response=null;
 const trydata = async (id) => {
   try {
     const uData = firestore.collection('users');
-    const snapshot= await uData.where('id', '==', id).get()
+    const snapshot= await uData.where('uid', '==', id).get()
 
     if (snapshot.empty) {
       console.log('No matching documents.');
@@ -76,7 +76,7 @@ function* loginWithEmailPassword({ payload }) {
     if (!loginUser.message) {
       let item=null;
       yield trydata(loginUser.user.uid).then(()=>{
-        item = { uid: response.id, title: response.name, img: response.thumb };        
+        item = { uid: response.uid, title: response.name, img: response.thumb,role: response.role };        
       }) 
       setCurrentUser(item)
       yield put(loginUserSuccess(item));     
@@ -102,9 +102,10 @@ const registerWithEmailPasswordAsync = async (email, password) =>
 const addUserasync = async (name,uid) => {
   console.log(name,uid);
   await firestore.collection('users').add({
-    id: uid,
+    uid: uid,
     name: name,
-    thumb: '/assets/img/profiles/l-1.jpg'
+    thumb: '/assets/img/profiles/l-1.jpg',
+    role: "user"
   })
 }
 
@@ -123,7 +124,7 @@ function* registerWithEmailPassword({ payload }) {
     // );
     console.log(registerUser);
     if (!registerUser.message) {
-      const item = { uid: registerUser.user.uid, title: name, img: '/assets/img/profiles/l-1.jpg' };
+      const item = { uid: registerUser.user.uid, title: name, img: '/assets/img/profiles/l-1.jpg',role: "user" };
       addUserasync(name,registerUser.user.uid)
       setCurrentUser(item);
       yield put(registerUserSuccess(item));
