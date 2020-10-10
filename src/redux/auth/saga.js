@@ -1,5 +1,5 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
-import { auth,database } from '../../helpers/Firebase';
+import { auth } from '../../helpers/Firebase';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -26,7 +26,7 @@ import {
   resetPasswordError,
 } from './actions';
 
-import { adminRoot, currentUser } from "../../constants/defaultValues"
+import { adminRoot } from "../../constants/defaultValues"
 import { setCurrentUser } from '../../helpers/Utils';
 
 export function* watchLoginUser() {
@@ -34,14 +34,12 @@ export function* watchLoginUser() {
 }
 
 const firestore = firebase.firestore();
-const analytics = firebase.analytics();
 let response=null;
 
-const trydata = async (uid) => {
+const trydata = async (id) => {
   try {
     const uData = firestore.collection('users');
-    // let response=null;
-    const snapshot= await uData.where('uid', '==', uid).get()
+    const snapshot= await uData.where('uid', '==', id).get()
 
     if (snapshot.empty) {
       console.log('No matching documents.');
@@ -50,7 +48,7 @@ const trydata = async (uid) => {
 
     snapshot.forEach(doc => {
       response=doc.data();
-      return
+      return;
       // console.log(response);
     });
     // const item = { uid: response.uid, title: response.name, img: response.profileimg };
@@ -77,15 +75,12 @@ function* loginWithEmailPassword({ payload }) {
     const loginUser = yield call(loginWithEmailPasswordAsync, email, password);
     if (!loginUser.message) {
       let item=null;
-      trydata(loginUser.user.uid).then(async ()=>{
-        // console.log(response);
-        item = { uid: response.uid, title: response.name, img: response.profileimg, role: response.role };
-        await setCurrentUser(item);
-        
-      }).then(loginUserSuccess(item).then(history.push(adminRoot))) 
-      // yield put(loginUserSuccess(item));
-      // console.log("aaya");     
-      // history.push(adminRoot);
+      yield trydata(loginUser.user.uid).then(()=>{
+        item = { uid: response.uid, title: response.name, img: response.thumb,role: response.role };        
+      }) 
+      setCurrentUser(item)
+      yield put(loginUserSuccess(item));     
+      history.push(adminRoot);
     } else {
       yield put(loginUserError(loginUser.message));
     }
@@ -109,7 +104,7 @@ const addUserasync = async (name,uid) => {
   await firestore.collection('users').add({
     uid: uid,
     name: name,
-    profileimg: '/assets/img/profiles/l-1.jpg',
+    thumb: '/assets/img/profiles/l-1.jpg',
     role: "user"
   })
 }
@@ -127,9 +122,9 @@ function* registerWithEmailPassword({ payload }) {
     //   addUserasync,
     //   name
     // );
-    
+    console.log(registerUser);
     if (!registerUser.message) {
-      const item = { uid: registerUser.user.uid, title: name, img: '/assets/img/profiles/l-1.jpg' };
+      const item = { uid: registerUser.user.uid, title: name, img: '/assets/img/profiles/l-1.jpg',role: "user" };
       addUserasync(name,registerUser.user.uid)
       setCurrentUser(item);
       yield put(registerUserSuccess(item));
@@ -149,11 +144,9 @@ export function* watchLogoutUser() {
 const logoutAsync = async (history) => {
   await auth
     .signOut()
-    .then(async ()=>{
-      await setCurrentUser("");
-      history.push(adminRoot)})
+    .then((user) => user)
     .catch((error) => error);
-  ;
+  history.push(adminRoot);
 };
 
 function* logout({ payload }) {

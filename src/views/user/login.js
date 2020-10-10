@@ -35,10 +35,11 @@ const Login = ({ history, loading, error, loginUserAction }) => {
   const [password] = useState('gogo123');
 
   useEffect(() => {
-    if (error) {
-      NotificationManager.warning(error, 'Login Error', 3000, null, null, '');
+    if (error && error !=='') {
+      alert("Login Error: "+error)
+      // NotificationManager.warning(error, 'Login Error', 3000, null, null, '');
     }
-  }, [error]);
+}, [error]);
 
   const onUserLogin = (values) => {
     if (!loading) {

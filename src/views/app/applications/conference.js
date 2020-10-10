@@ -42,9 +42,10 @@ const DefaultConference = ({ intl, match }) => {
    }
 
     return (
-    <div>
+    <div style={image2}>
      <img height="100%" width="100%" style={image2} src="https://ficci-capam.framez.sg/images/audi3.jpg" />
-		 <iframe src="https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963" allowFullScreen allow="autoplay; encrypted-media" style={vid} frameborder="0"></iframe>
+	 <iframe src="https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963" allowFullScreen allow="autoplay; encrypted-media" style={vid}>      </iframe>
+
 		 <img src="../../../../assets/logos/slido.png" height="100%" width="100%" style={logo} onClick={()=>slidoToggle()}/>
 		 <iframe src="https://app.sli.do/event/e1oazdil" height="100%" width="100%" style={slido}/>
      </div>
