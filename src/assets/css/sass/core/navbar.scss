@@ -1,6 +1,6 @@
 .navbar {
   background: $foreground-color;
-  height: calc(#{$navbar-height}-10%);
+  height: calc(#{$navbar-height} - 5%);
   padding: 10px;
   @include depth(1);
 
