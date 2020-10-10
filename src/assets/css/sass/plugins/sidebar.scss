@@ -5,7 +5,7 @@
   bottom: 0;
   padding-top: $navbar-height;
   z-index: 4;
-  height: calc(20% + #{$navbar-height});
+  height: calc(30% + #{$navbar-height});
   transition: border-radius $menu-collapse-time;
 
   .scrollbar-container {
@@ -14,13 +14,13 @@
   }
 
   .main-menu {
-    width:$main-menu-width;
-    height: calc(100% - #{$navbar-height});
+    width: calc(#{$main-menu-width} - 2%);
+    height: 100%;
     background: $foreground-color;
     z-index: 3;
     position: fixed;
     transition: transform $menu-collapse-time;
-    padding-top: 0px;
+    padding-top: -1px;
     padding-bottom: 0px;
     left: 0;
 
@@ -126,15 +126,15 @@
   }
 
   .sub-menu {
-    width: $sub-menu-width;
+    width: calc(#{$sub-menu-width} - 2%);
     background: $foreground-color;
     z-index: 2;
     position: fixed;
-    left: $main-menu-width;
+    left: calc(#{$main-menu-width} - 2%);
     border-left: 1px solid $separator-color-light;
     @include depth(2);
     transition: transform $menu-collapse-time;
-    height: calc(100% - #{$navbar-height});
+    height: calc(100%);
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 0;

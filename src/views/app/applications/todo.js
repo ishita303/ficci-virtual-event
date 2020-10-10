@@ -29,7 +29,7 @@ import AddNewTodoModal from '../../../containers/applications/AddNewTodoModal';
 import TodoApplicationMenu from '../../../containers/applications/TodoApplicationMenu';
 import { getCurrentUser } from '../../../helpers/Utils';
 // import { currentUser } from '../../../constants/defaultValues';
-const currentUser=getCurrentUser();
+
 
 const getIndex = (value, arr, prop) => {
   for (let i = 0; i < arr.length; i += 1) {
@@ -58,6 +58,7 @@ const TodoApp = ({
   const [dropdownSplitOpen, setDropdownSplitOpen] = useState(false);
   const [displayOptionsIsOpen, setDisplayOptionsIsOpen] = useState(false);
   const [lastChecked, setLastChecked] = useState(null);
+  const currentUser=getCurrentUser();
 
   useEffect(() => {
     document.body.classList.add('right-menu');
@@ -173,9 +174,7 @@ const TodoApp = ({
               <IntlMessages id="Agenda" />
             </h1>
 
-            {loading && (
-              <Addnew isAdmin= {currentUser.role} />
-            )}
+            {<Addnew isAdmin= {currentUser.role} />}
             <Breadcrumb match={match} />
           </div>
 
