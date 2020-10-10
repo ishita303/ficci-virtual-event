@@ -5,9 +5,10 @@ body{
 }
 
 main {
-  margin-left: 123px !important;
+  margin-left: 121px !important;
   margin-top: 60px;
   margin-right: 0;
+  margin-bottom: -40px;
   transition: margin-left $menu-collapse-time;
 
   &.sub-hidden {
