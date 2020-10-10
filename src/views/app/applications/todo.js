@@ -29,7 +29,7 @@ import AddNewTodoModal from '../../../containers/applications/AddNewTodoModal';
 import TodoApplicationMenu from '../../../containers/applications/TodoApplicationMenu';
 import { getCurrentUser } from '../../../helpers/Utils';
 // import { currentUser } from '../../../constants/defaultValues';
-const currentUser=getCurrentUser();
+
 
 const getIndex = (value, arr, prop) => {
   for (let i = 0; i < arr.length; i += 1) {
@@ -58,6 +58,7 @@ const TodoApp = ({
   const [dropdownSplitOpen, setDropdownSplitOpen] = useState(false);
   const [displayOptionsIsOpen, setDisplayOptionsIsOpen] = useState(false);
   const [lastChecked, setLastChecked] = useState(null);
+  const currentUser=getCurrentUser();
 
   useEffect(() => {
     document.body.classList.add('right-menu');
@@ -165,7 +166,7 @@ const TodoApp = ({
   const { messages } = intl;
 
   return (
-    <div style={{padding:"20px"}}>
+    <div style={{padding:"20px",paddingTop: "50px",paddingBottom:"5px"}}>
       <Row className="app-row survey-app">
         <Colxx xxs="12">
           <div className="mb-2">
@@ -173,10 +174,7 @@ const TodoApp = ({
               <IntlMessages id="Agenda" />
             </h1>
 
-            {loading && (
-              <Addnew isAdmin= {currentUser.role} />
-            )}
-            <Breadcrumb match={match} />
+            {<Addnew isAdmin= {currentUser.role} />}
           </div>
 
           {/* <div className="mb-2">
