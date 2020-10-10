@@ -19,7 +19,7 @@ const DefaultDashboard = ({ intl, match }) => {
       target: "#t2",
       content: "Click here to access Helpdesk",
       disableBeacon: true,
-      placement: "top"
+      placement: "top",
     },
     {
       target: "#t3",
@@ -167,8 +167,8 @@ const DefaultDashboard = ({ intl, match }) => {
   return (
     <div style={main}>
     <div style={image}>
-      <img style={image} height="100%" width="100%" src="https://ficci-capam.framez.sg/images/lobby.jpg" />
-      <iframe src="https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963" allowFullScreen allow="autoplay; encrypted-media" style={video} frameborder="0">      </iframe>
+      <img style={image} height="100%" width="100%" src="https://ficci-capam.framez.sg/images/lobby.jpg" alt="main"/>
+      <iframe src="https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963" allowFullScreen allow="autoplay; encrypted-media" style={video} frameborder="0" alt="video">      </iframe>
 
       <Tour
         // disableOverlay
@@ -186,50 +186,50 @@ const DefaultDashboard = ({ intl, match }) => {
         }}
       />
 
-      <div style={constyle1} id='t3'/>
-      <NavLink to={`${adminRoot}/applications/conference`}>
-      <div style={constyle}>
-        <span className="blinkingdot"></span>
+      <div style={constyle1} id='t3' alt="conference"/>
+      <NavLink to={`${adminRoot}/applications/conference`} alt="conference">
+      <div style={constyle} alt="conference">
+        <span className="blinkingdot" alt="conference"></span>
       </div>
       </NavLink>
 
       <div style={lounge1} id='t4'/>
-      <NavLink to={`${adminRoot}/dashboards/analytics`}>
+      <NavLink to={`${adminRoot}/dashboards/analytics`} alt="lounge">
       <div style={lounge}>
         <span className="blinkingdot"></span>
       </div>
       </NavLink>
 
       <div style={hdstyle1} id='t2'/>
-      <NavLink to={`${adminRoot}/ui/help`}>
+      <NavLink to={`${adminRoot}/ui/help`} alt="help">
       <div style={hdstyle}>
         <span className="blinkingdot"></span>
       </div>
       </NavLink>
 
       <div style={speaker1} id='t6'/>
-      <NavLink to={`${adminRoot}/applications/speaker`}>
+      <NavLink to={`${adminRoot}/applications/speaker`} alt="speakers">
       <div style={speaker}>
         <span className="blinkingdot"></span>
       </div>
       </NavLink>
 
       <div style={agenda1} id='t5'/>
-      <NavLink to={`${adminRoot}/applications/todo`}>
+      <NavLink to={`${adminRoot}/applications/todo`} alt="agenda">
       <div style={agenda}>
         <span className="blinkingdot"></span>
       </div>
       </NavLink>
 
       <div style={doc1} id='a5'/>
-      <NavLink to={`${adminRoot}/pages/blog/blog-list`}>
+      <NavLink to={`${adminRoot}/pages/blog/blog-list`} alt="blog">
       <div style={doc}>
         <span className="blinkingdot"></span>
       </div>
       </NavLink>
 
       <div style={support1} id='a6'/>
-      <NavLink to={`${adminRoot}/ui/faq`}>
+      <NavLink to={`${adminRoot}/ui/faq`} alt="faq">
       <div style={support}>
         <span className="blinkingdot"></span>
       </div>
