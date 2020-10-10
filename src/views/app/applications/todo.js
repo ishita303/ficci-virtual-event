@@ -166,7 +166,7 @@ const TodoApp = ({
   const { messages } = intl;
 
   return (
-    <div style={{padding:"20px"}}>
+    <div style={{padding:"20px",paddingTop: "50px",paddingBottom:"5px"}}>
       <Row className="app-row survey-app">
         <Colxx xxs="12">
           <div className="mb-2">
@@ -175,7 +175,6 @@ const TodoApp = ({
             </h1>
 
             {<Addnew isAdmin= {currentUser.role} />}
-            <Breadcrumb match={match} />
           </div>
 
           {/* <div className="mb-2">
