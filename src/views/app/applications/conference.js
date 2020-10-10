@@ -20,10 +20,10 @@ const DefaultConference = ({ intl, match }) => {
 	const vid={
 	 transform: `skew(${0}deg, ${0}deg)`,
 	 position: 'absolute',
-	 width: "50%",
-	 height: "55%",
+	 width: "80.3%",
+	 height: "54.4%",
 	 top: "7.7%",
-	 left: "29.3%"
+	 left: "9.8%"
  }
 	const slidoToggle=()=>{
 		if (showSlido=="flex")
@@ -44,7 +44,7 @@ const DefaultConference = ({ intl, match }) => {
     return (
     <div style={image2}>
      <img height="100%" width="100%" style={image2} src="https://ficci-capam.framez.sg/images/audi3.jpg" />
-	 <iframe src="https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963" allowFullScreen allow="autoplay; encrypted-media" style={vid}>      </iframe>
+	 	<iframe src="https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963" allowFullScreen allow="autoplay; encrypted-media" style={vid} frameborder="0"></iframe>
 
 		 <img src="../../../../assets/logos/slido.png" height="100%" width="100%" style={logo} onClick={()=>slidoToggle()}/>
 		 <iframe src="https://app.sli.do/event/e1oazdil" height="100%" width="100%" style={slido}/>

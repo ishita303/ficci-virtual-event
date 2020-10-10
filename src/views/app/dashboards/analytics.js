@@ -15,10 +15,10 @@ const DashboardAnalytics = ({ intl, match }) => {
     transform: "skew(0deg, 0deg)",
     position: "absolute",
     width: "19.84%",
-    height: "19.91%",
-    top: "22.59%",
+    height: "20%",
+    top: "22.6%",
     left: "39.84%"}
- 
+
    let slido={
      display:showSlido, justifyContent: 'center', alignItems: 'center',
                     transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
