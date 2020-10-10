@@ -49,22 +49,29 @@ const BlogList = ({ match }) => {
     position:"relative"
   }
   const list={
-    listStyle:'none'
+    listStyle:'none',
+    float:"right"
   }
   const listitem={
     position:"relative",
-    padding: "10px 10px 10px 0px",
+    padding: "3px 5px 5px 0px",
     backgroundcolor: "#fff",
-    fontSize:"14.6px",
-    float:"left"
+    fontSize:"14px",
   }
   const listitemactive={
     position:"relative",
-    padding: "15px 10px 10px 0px",
+    padding: "10px 5px 5px 0px",
     backgroundcolor: "#fff",
     textcolor:"purple" ,
     fontSize:"14.6px",
     fontAlign:"center"
+  }
+  const listitemlast={
+    position:"relative",
+    padding: "5px 50px 5px 5px",
+    marginBottom: "5px",
+    backgroundcolor: "#fff",
+    fontSize:"14.6px",
   }
 
   return (
@@ -87,25 +94,25 @@ const BlogList = ({ match }) => {
                 <ModalBody>
                 <div style={maindivi}>
                   <div style={leftdivi}>
-                  <iframe src={myLink} height="400px" width="100%">
+                  <iframe src={myLink} height="500px" width="100%">
                     <embed width="100%" height="100%" src={myLink} type="application/pdf" />
                   </iframe>
                   </div>
                   <div style={divi}>
                   <ul style={list}>
                     <li style={listitemactive}
-                      onClick={() => setLink("https://ficci-capam.framez.sg/docs/Sponsors.pdf")}>SPONSORS</li>
+                      onClick={() => setLink("https://ficci-capam.framez.sg/docs/Sponsors.pdf")}>SPONSORS<hr/></li>
                     <li style={listitem}
-                        onClick={() => setLink("https://ficci-capam.framez.sg/docs/FICCI%20EOS%20-%20July%202020.pdf")}>FICCI EOS - JULY 2020 </li>
+                        onClick={() => setLink("https://ficci-capam.framez.sg/docs/FICCI%20EOS%20-%20July%202020.pdf")}>FICCI EOS - JULY 2020 <hr/></li>
                     <li style={listitem}
-                        onClick={() => setLink("https://ficci-capam.framez.sg/docs/Sponsors.pdf")}>MANUFACTURING SURVEY REPORT </li>
+                        onClick={() => setLink("https://ficci-capam.framez.sg/docs/Sponsors.pdf")}>MANUFACTURING SURVEY REPORT <hr/></li>
                     <li style={listitem}
-                        onClick={() => setLink("https://ficci-capam.framez.sg/docs/FICCI%20EOS%20-%20July%202020.pdf")}>FICCI DHRUVA SURVEY </li>
+                        onClick={() => setLink("https://ficci-capam.framez.sg/docs/FICCI%20EOS%20-%20July%202020.pdf")}>FICCI DHRUVA SURVEY <hr/></li>
                     <li style={listitem}
-                        onClick={() => setLink("https://ficci-capam.framez.sg/docs/Sponsors.pdf")}>WOB_FINAL REPORT_3103_V12 </li>
+                        onClick={() => setLink("https://ficci-capam.framez.sg/docs/Sponsors.pdf")}>WOB_FINAL REPORT_3103_V12 <hr/></li>
                     <li style={listitem}
-                        onClick={() => setLink("https://ficci-capam.framez.sg/docs/FICCI%20EOS%20-%20July%202020.pdf")}>CAPAM COMPENDIUM 2020 </li>
-                    <li style={listitem}
+                        onClick={() => setLink("https://ficci-capam.framez.sg/docs/FICCI%20EOS%20-%20July%202020.pdf")}>CAPAM COMPENDIUM 2020 <hr/></li>
+                    <li style={listitemlast}
                         onClick={() => setLink("https://ficci-capam.framez.sg/docs/Sponsors.pdf")}>L&T PROFILE </li>
                   </ul>
                   </div>

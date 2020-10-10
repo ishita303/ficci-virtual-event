@@ -1,7 +1,7 @@
 .navbar {
   background: $foreground-color;
-  height: $navbar-height;
-  padding: 1.5rem 0;
+  height: calc(#{$navbar-height}-10%);
+  padding: 10px;
   @include depth(1);
 
   #notificationDropdown {

@@ -12,8 +12,6 @@ const DashboardAnalytics = ({ intl, match }) => {
     position: "relative"
    }
    const vid={
-    cursor: "pointer",
-    zIndex: "2",
     transform: "skew(0deg, 0deg)",
     position: "absolute",
     width: "20%",
@@ -25,13 +23,13 @@ const DashboardAnalytics = ({ intl, match }) => {
      display:showSlido, justifyContent: 'center', alignItems: 'center',
                     transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
                     width: '500px', height: '600px',
-                    top: '5.11%',left: '61.51%'
+                    top: '3.11%',left: '59.51%'
    }
   const logo={
     display: 'flex', justifyContent: 'center', alignItems: 'center',
                     transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
-                    width: '50px', height: '50px',
-                    top: '83%',left: '94.31%'
+                    width: '70px', height: '70px',
+                    top: '78%',left: '91.31%'
   }
   const slidoToggle=()=>{
     if (showSlido=="flex")

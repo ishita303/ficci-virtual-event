@@ -59,12 +59,23 @@ const Login = ({ history, loading, error, loginUserAction }) => {
             <p className="white mb-0">
               Please use your credentials to login.
               <br />
-              If you are not a member, please{' '}
-              <NavLink to="/user/register" className="white">
-                register
-              </NavLink>
-              .
-            </p>
+              If you are not a member, please{' '}  </p><br/>
+              <Button
+                color="primary"
+                className={`btn-shadow btn-multiple-state ${
+                  loading ? 'show-spinner' : ''
+                }`}
+                size="lg"
+              >
+                <span className="spinner d-inline-block">
+                  <span className="bounce1" />
+                  <span className="bounce2" />
+                  <span className="bounce3" />
+                </span>
+                <NavLink to="/user/register" className="white">
+                  REGISTER
+                </NavLink>
+              </Button>
           </div>
           <div className="form-side">
             <NavLink to="/" className="white">

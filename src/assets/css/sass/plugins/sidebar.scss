@@ -1,7 +1,7 @@
 /* 10.Menu*/
 .sidebar {
   position: fixed;
-  top: 0;
+  top: -35px;
   bottom: 0;
   padding-top: $navbar-height;
   z-index: 4;
@@ -14,14 +14,14 @@
   }
 
   .main-menu {
-    width: $main-menu-width;
+    width:$main-menu-width;
     height: calc(100% - #{$navbar-height});
     background: $foreground-color;
     z-index: 3;
     position: fixed;
     transition: transform $menu-collapse-time;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     left: 0;
 
     .scroll {

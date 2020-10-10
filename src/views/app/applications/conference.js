@@ -14,9 +14,17 @@ const DefaultConference = ({ intl, match }) => {
 	const logo={
 		display: 'flex', justifyContent: 'center', alignItems: 'center',
 										transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
-										width: '50px', height: '50px',
-										top: '81%',left: '94.31%'
+										width: '70px', height: '70px',
+										top: '79%',left: '91.31%'
 	}
+	const vid={
+	 transform: `skew(${0}deg, ${0}deg)`,
+	 position: 'absolute',
+	 width: "50%",
+	 height: "55%",
+	 top: "7.7%",
+	 left: "29.3%"
+ }
 	const slidoToggle=()=>{
 		if (showSlido=="flex")
 			setSlidoshow("none")
@@ -27,20 +35,12 @@ const DefaultConference = ({ intl, match }) => {
 		display:showSlido, justifyContent: 'center', alignItems: 'center',
 									 transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
 									 width: '350px', height: '440px',
-									 top: '25.11%',left: '71.51%'
+									 top: '23.11%',left: '68.51%'
 	}
   const image2={
     position: "relative"
    }
-	 const vid={
-		cursor: "pointer",
-		zIndex: "2",
-		transform: "skew(0deg, 0deg)",
-		position: "absolute",
-		width: "50%",
-		height: "55%",
-		top: "7.7%",
-		left: "29.3%"}
+
     return (
     <div>
      <img height="100%" width="100%" style={image2} src="https://ficci-capam.framez.sg/images/audi3.jpg" />

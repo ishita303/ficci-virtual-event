@@ -57,16 +57,17 @@ const BlogList = ({ match }) => {
   const list={
     listStyle:'none'
   }
-  const listitem={
+  const listitemlast={
     position:"relative",
-    padding: "10px 10px 10px 0px",
+    padding: "0px 0px 0px 0px",
+    marginBottom: "5px",
     backgroundcolor: "#fff",
     fontSize:"14.6px",
-    float:"left"
   }
   const listitemactive={
     position:"relative",
-    padding: "15px 10px 10px 0px",
+    marginTop: "5px",
+    padding: "10px 10px 10px 0px",
     backgroundcolor: "#fff",
     textcolor:"purple" ,
     fontSize:"14.6px",
@@ -101,8 +102,8 @@ const BlogList = ({ match }) => {
                   </div>
                   <div style={divi}>
                   <ul style={list}>
-                    <li style={listitemactive} onClick={() => setLink("https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963")}>WELCOME VIDEO</li>
-                    <li style={listitem} onClick={() => setLink("https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963")}> L&T </li>
+                    <li style={listitemactive} onClick={() => setLink("https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963")}>WELCOME VIDEO<hr/></li>
+                    <li style={listitemlast} onClick={() => setLink("https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963")}> L&T </li>
                   </ul>
                   </div>
                 </div>

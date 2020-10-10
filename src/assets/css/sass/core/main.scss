@@ -1,13 +1,13 @@
 body{
   padding-bottom: 0 !important;
   padding-right: 0 !important;
+  overflow:hidden;
 }
 
 main {
   margin-left: 123px !important;
-  margin-top: 100px;
+  margin-top: 60px;
   margin-right: 0;
-  margin-bottom: 0;
   transition: margin-left $menu-collapse-time;
 
   &.sub-hidden {
