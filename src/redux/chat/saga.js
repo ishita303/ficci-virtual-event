@@ -23,7 +23,6 @@ import { connectAdvanced } from 'react-redux';
 // import { array } from 'prop-types';
 // import { firestore } from 'firebase';
 // import { array } from 'prop-types';
-import {refreshScreen} from '../../views/app/applications/chat'
 let contactsData = [];
 let conversationsData = [];
 let conversationStatus = ''
@@ -121,7 +120,7 @@ const loadConversationsAsync = async (userID) => {
 
 
           conversationsData.push(messages)
-          refreshScreen()
+
 
           // console.log("ConvoData: ", conversationsData);
           conversationStatus = 'convos'
