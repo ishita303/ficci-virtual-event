@@ -15,6 +15,7 @@ import {
   createConversation,
   searchContact,
 } from '../../redux/actions';
+import { auth } from '../../helpers/Firebase';
 
 const ChatApplicationMenu = ({
   intl,
@@ -60,21 +61,26 @@ const ChatApplicationMenu = ({
     handleSearchContact('');
   };
 
-  const handleContactClick = (userId) => {
-    if (activeTab !== 'messages') {
-      toggleAppMenu('messages');
-      searchContactAction('');
-    }
+  const handleContactClick = (userData) => {
+    // if (activeTab !== 'messages') {
+    //   toggleAppMenu('messages');
+    //   searchContactAction('');
+    // }
+    console.log('userData', userData);
+    if (userData.uid === auth.currentUser.uid) { }
+    else
+      changeConversationAction(userData);
 
-    const conversation = conversations.find(
-      (x) => x.users.includes(currentUser.id) && x.users.includes(userId)
-    );
-    if (conversation) {
-      changeConversationAction(userId);
-    } else {
-      createConversationAction(currentUser.id, userId, conversations);
-      changeConversationAction(userId);
-    }
+    // const conversation = conversations.find(
+    //   (x) => x.users.includes(currentUser.id) && x.users.includes(userId)
+    // );
+    // console.log(conversations); 
+    // if (conversation) {
+    //   changeConversationAction(userId);
+    // } else {
+    //   createConversationAction(currentUser.id, userId, conversations);
+    //   changeConversationAction(userId);
+    // }
   };
 
   const { messages } = intl;
@@ -83,7 +89,7 @@ const ChatApplicationMenu = ({
     <ApplicationMenu>
       <CardHeader className="pl-0 pr-0">
         <Nav tabs className="card-header-tabs ml-0 mr-0">
-          <NavItem className="w-50 text-center">
+          {/* <NavItem className="w-50 text-center">
             <NavLink
               to="#"
               location={{}}
@@ -95,7 +101,7 @@ const ChatApplicationMenu = ({
             >
               <IntlMessages id="chat.messages" />
             </NavLink>
-          </NavItem>
+          </NavItem> */}
           <NavItem className="w-50 text-center">
             <NavLink
               to="#"
@@ -123,94 +129,47 @@ const ChatApplicationMenu = ({
           />
         </div>
       </div>
-
-      <TabContent activeTab={activeTab} className="chat-app-tab-content">
-        <TabPane tabId="messages" className="chat-app-tab-pane">
-          <PerfectScrollbar
-            options={{ suppressScrollX: true, wheelPropagation: false }}
-          >
-            <div className="pt-2 pr-4 pl-4 pb-2">
-              {loadingContacts &&
-                loadingConversations &&
-                conversations.map((item, index) => {
-                  const otherUser = allContacts.find(
-                    (u) => u.id === item.users.find((x) => x !== currentUser.id)
-                  );
+      <PerfectScrollbar
+        options={{ suppressScrollX: true, wheelPropagation: false }}
+      >
+        <div className="pt-2 pr-4 pl-4 pb-2">
+          {console.log("contactsMenu: ", allContacts)}
+          {
+            allContacts
+              .map((item, index) => {
+                return item.map((item, index) => {
+                  if (item.uid === auth.currentUser.uid) return null
                   return (
                     <div
                       key={index}
-                      className="d-flex flex-row mb-1 border-bottom pb-3 mb-3"
+                      className="d-flex flex-row mb-3 border-bottom pb-3"
                     >
                       <NavLink
                         className="d-flex"
                         to="#"
                         location={{}}
-                        onClick={(e) =>
-                          handleConversationClick(e, otherUser.id)
-                        }
+                        onClick={() => handleContactClick(item)}
                       >
                         <img
-                          alt={otherUser.name}
-                          src={otherUser.thumb}
+                          alt={item.name}
+                          src="/assets/img/profiles/l-1.jpg"
                           className="img-thumbnail border-0 rounded-circle mr-3 list-thumbnail align-self-center xsmall"
                         />
                         <div className="d-flex flex-grow-1 min-width-zero">
-                          <div className="pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero">
+                          <div className="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero">
                             <div className="min-width-zero">
-                              <p className=" mb-0 truncate">{otherUser.name}</p>
-                              <p className="mb-1 text-muted text-small">
-                                {item.lastMessageTime}
-                              </p>
+                              <p className="mb-0 truncate">{item.name}</p>
                             </div>
                           </div>
                         </div>
                       </NavLink>
                     </div>
                   );
-                })}
-            </div>
-          </PerfectScrollbar>
-        </TabPane>
-        <TabPane tabId="contacts" className="chat-app-tab-pane">
-          <PerfectScrollbar
-            options={{ suppressScrollX: true, wheelPropagation: false }}
-          >
-            <div className="pt-2 pr-4 pl-4 pb-2">
-              {loadingContacts &&
-                contacts
-                  .filter((x) => x.id !== currentUser.id)
-                  .map((item, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="d-flex flex-row mb-3 border-bottom pb-3"
-                      >
-                        <NavLink
-                          className="d-flex"
-                          to="#"
-                          location={{}}
-                          onClick={() => handleContactClick(item.id)}
-                        >
-                          <img
-                            alt={item.name}
-                            src={item.thumb}
-                            className="img-thumbnail border-0 rounded-circle mr-3 list-thumbnail align-self-center xsmall"
-                          />
-                          <div className="d-flex flex-grow-1 min-width-zero">
-                            <div className="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero">
-                              <div className="min-width-zero">
-                                <p className="mb-0 truncate">{item.name}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </NavLink>
-                      </div>
-                    );
-                  })}
-            </div>
-          </PerfectScrollbar>
-        </TabPane>
-      </TabContent>
+                })
+              })}
+        </div>
+      </PerfectScrollbar>
+
     </ApplicationMenu>
   );
 };

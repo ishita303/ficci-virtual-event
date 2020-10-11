@@ -10,11 +10,12 @@ import {
   CHAT_SEARCH_CONTACT,
   CHAT_CHANGE_CONVERSATION,
 } from '../actions';
+import _ from 'lodash'
 
 const INIT_STATE = {
-  allContacts: null,
-  contacts: null,
-  conversations: null,
+  allContacts: [],
+  contacts: [],
+  conversations: [],
   error: '',
   searchKeyword: '',
   loadingContacts: false,
@@ -30,11 +31,13 @@ export default (state = INIT_STATE, action) => {
       return { ...state, loadingContacts: false };
 
     case CHAT_GET_CONTACTS_SUCCESS:
+      console.log("state: ",state.allContacts);
+      console.log("payload: ",action.payload);
       return {
         ...state,
         loadingContacts: true,
-        allContacts: action.payload.contacts,
-        contacts: action.payload.contacts,
+        allContacts: _.uniqBy([...state.allContacts,action.payload.contacts],"id"),
+        contacts:  _.uniqBy([...state.contacts,action.payload.contacts],"id"), 
         currentUser: action.payload.currentUser,
       };
 
@@ -45,10 +48,11 @@ export default (state = INIT_STATE, action) => {
       return { ...state, loadingConversations: false };
 
     case CHAT_GET_CONVERSATIONS_SUCCESS:
+      console.log("lets see: ",action.payload.conversations);
       return {
         ...state,
         loadingConversations: true,
-        conversations: action.payload.conversations,
+        conversations:  action.payload.conversations,
         selectedUserId: action.payload.selectedUser,
       };
 
@@ -56,9 +60,10 @@ export default (state = INIT_STATE, action) => {
       return { ...state, loadingConversations: false, error: action.payload };
 
     case CHAT_CHANGE_CONVERSATION:
+      console.log('Reducer Convo',action.payload)
       return {
         ...state,
-        selectedUser: state.allContacts.find((x) => x.id === action.payload),
+        selectedUser:  action.payload
       };
 
     case CHAT_ADD_MESSAGE_TO_CONVERSATION:

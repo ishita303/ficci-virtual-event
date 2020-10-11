@@ -39,9 +39,9 @@ const ChatApp = ({
   const scrollBarRef = useRef(null);
   useEffect(() => {
     document.body.classList.add('no-footer');
-    const currentUserId = 0;
+    const currentUserId = selectedUser || 0;
     getContactsAction();
-    getConversationsAction(currentUserId);
+    // getConversationsAction(selectedUser);
 
     return () => {
       document.body.classList.remove('no-footer');
@@ -58,8 +58,9 @@ const ChatApp = ({
   };
 
   useEffect(() => {
-    if (loadingConversations && loadingContacts && selectedUser == null) {
-      changeConversationAction(selectedUserId);
+    console.log(conversations.length);
+    if (loadingConversations && loadingContacts && selectedUser != null) {
+      changeConversationAction(selectedUser);
       focusScrollBottom();
     }
   }, [
@@ -68,18 +69,20 @@ const ChatApp = ({
     loadingConversations,
     selectedUser,
     selectedUserId,
+    conversations.length
   ]);
 
   useEffect(() => {
+    getConversationsAction(selectedUser);
     focusScrollBottom();
-  }, [selectedUserId]);
+  }, [selectedUser]);
 
   const handleChatInputPress = (e) => {
     if (e.key === 'Enter') {
       if (messageInput.length > 0) {
         addMessageToConversationAction(
-          currentUser.id,
-          selectedUser.id,
+          currentUser.uid,
+          selectedUser.uid,
           messageInput,
           conversations
         );
@@ -93,8 +96,8 @@ const ChatApp = ({
   const handleSendButtonClick = () => {
     if (messageInput.length > 0) {
       addMessageToConversationAction(
-        currentUser.id,
-        selectedUser.id,
+        currentUser.uid,
+        selectedUser.uid,
         messageInput,
         conversations
       );
@@ -107,19 +110,15 @@ const ChatApp = ({
   const { messages } = intl;
 
   const selectedConversation =
-    loadingConversations && loadingContacts && selectedUser
-      ? conversations.find(
-          (x) =>
-            x.users.includes(currentUser.id) &&
-            x.users.includes(selectedUser.id)
-        )
-      : null;
+    null;
 
-  return loadingConversations && loadingContacts ? (
+  return true ? (
     <>
       <Row className="app-row">
         <Colxx xxs="12" className="chat-app">
+          {/* {console.log('conversations: ',conversations)} */}
           {loadingConversations && selectedUser && (
+
             <ChatHeading
               name={selectedUser.name}
               thumb={selectedUser.thumb}
@@ -127,25 +126,25 @@ const ChatApp = ({
             />
           )}
 
-          {selectedConversation && (
-            <PerfectScrollbar
-              ref={scrollBarRef}
-              // containerRef={(ref) => {}}
-              options={{ suppressScrollX: true, wheelPropagation: false }}
-            >
-              {selectedConversation.messages.map((item, index) => {
-                const sender = allContacts.find((x) => x.id === item.sender);
-                return (
-                  <MessageCard
-                    key={index}
-                    sender={sender}
-                    item={item}
-                    currentUserid={currentUser.id}
-                  />
-                );
-              })}
-            </PerfectScrollbar>
-          )}
+
+          <PerfectScrollbar
+            ref={scrollBarRef}
+            // containerRef={(ref) => {}}
+            options={{ suppressScrollX: true, wheelPropagation: false }}
+          >
+            {conversations.map((item, index) => {
+              {/* console.log("item:", item) */}
+              return (
+                <MessageCard
+                  key={index}
+                  senderId={item.senderId}
+                  messageText={item.messageText}
+                  timestamp={new Date(item.timestamp).toLocaleDateString("en-US")}
+                />
+              );
+            })}
+          </PerfectScrollbar>
+
         </Colxx>
       </Row>
       <SaySomething
@@ -160,8 +159,8 @@ const ChatApp = ({
       <ChatApplicationMenu activeTab={activeTab} toggleAppMenu={setActiveTab} />
     </>
   ) : (
-    <div className="loading" />
-  );
+      <div className="loading" />
+    );
 };
 
 const mapStateToProps = ({ chatApp }) => {
