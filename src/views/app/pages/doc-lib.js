@@ -73,7 +73,7 @@ const BlogList = ({ match }) => {
     backgroundcolor: "#fff",
     fontSize:"14.6px",
   }
-
+  
   return (
     <div>
     <Row>

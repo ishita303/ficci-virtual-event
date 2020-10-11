@@ -8,6 +8,8 @@ import Vimeo from '@u-wave/react-vimeo';
 
 const DashboardAnalytics = ({ intl, match }) => {
   const [showSlido,setSlidoshow]=useState("none");
+  const [vidLoad, setLoad] = useState(false);
+
   const image1={
     position: "relative"
    }
@@ -24,26 +26,41 @@ const DashboardAnalytics = ({ intl, match }) => {
                     transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
                     width: '500px', height: '600px',
                     top: '3.11%',left: '59.51%'
-   }
-  const logo={
-    display: 'flex', justifyContent: 'center', alignItems: 'center',
-                    transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
-                    width: '70px', height: '70px',
-                    top: '78%',left: '91.31%'
-  }
-  const slidoToggle=()=>{
-    if (showSlido=="flex")
-      setSlidoshow("none")
-    else
-      setSlidoshow("flex")
-  }
-    return (
-    <div style={image1}>
-     <img height="100%" width="100%" style={image1} src="https://ficci-capam.framez.sg/images/lounge.jpg" alt="lounge"/>
-     <iframe src="https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963" allowFullScreen allow="autoplay; encrypted-media" style={vid} frameborder="0"></iframe>
-     <img src="../../../../assets/logos/chat.png" height="100%" width="100%" style={logo}  onClick={()=>slidoToggle()}/>
-     <iframe src="../applications/chat" height="100%" width="100%" style={slido}/>
-    </div>
+      }
+    const logo={
+      display: 'flex', justifyContent: 'center', alignItems: 'center',
+                      transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
+                      width: '70px', height: '70px',
+                      top: '78%',left: '91.31%'
+    }
+    const slidoToggle=()=>{
+      if (showSlido=="flex")
+        setSlidoshow("none")
+      else
+        setSlidoshow("flex")
+    }
+    const vidiloadi={
+       position:"relative",
+       height:"100%",
+       width:"100%",
+       overflow:"hidden",
+     }
+
+  return vidLoad ? (
+	   <>
+      <div style={image1}>
+       <img height="100%" width="100%" style={image1} src="https://ficci-capam.framez.sg/images/lounge.jpg" alt="lounge"/>
+       <iframe src="https://player.vimeo.com/video/451526648?autoplay=1&app_id=122963" allowFullScreen allow="autoplay; encrypted-media" style={vid} frameborder="0"></iframe>
+       <img src="../../../../assets/logos/chat.png" height="100%" width="100%" style={logo}  onClick={()=>slidoToggle()}/>
+       <iframe src="../applications/chat" height="100%" width="100%" style={slido}/>
+      </div>
+    </>
+    ) : (
+      <div>
+        <video autoPlay="true" onEnded={() => setLoad({isLoaded: true})} style={vidiloadi}>
+          <source src={'https://ficci-capam.framez.sg/lobbyvideo/help_to_lounge.mp4'} type="video/mp4" />
+        </video>
+      </div>
     );
 };
 export default injectIntl(DashboardAnalytics);
