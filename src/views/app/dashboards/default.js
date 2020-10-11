@@ -69,7 +69,7 @@ const DefaultDashboard = ({ intl, match }) => {
     display: 'flex', justifyContent: 'center', alignItems: 'center',
                    transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
                    width: '16.63%', height: '14.63%',
-                   top: '72.11%',left: '41.51%',
+                   top: '75.11%',left: '41.51%',
   }
   const hdstyle={
     display: 'flex', justifyContent: 'center', alignItems: 'center',
@@ -81,7 +81,7 @@ const DefaultDashboard = ({ intl, match }) => {
     display: 'flex', justifyContent: 'center', alignItems: 'center',
                    transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
                    width: '20.52%', height: '20%',
-                   top: '47.93%',left: '39.79%',
+                   top: '50.8%',left: '39.79%',
   }
   const constyle={
     display: 'flex', justifyContent: 'center', alignItems: 'center',
@@ -93,7 +93,7 @@ const DefaultDashboard = ({ intl, match }) => {
     display: 'flex', justifyContent: 'center', alignItems: 'center',
                    transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
                    width: '10%', height: '18.07%',
-                   top: '48%',left: '21.44%',
+                   top: '51%',left: '21.44%',
   }
   const lounge={
     display: 'flex', justifyContent: 'center', alignItems: 'center',
@@ -105,7 +105,7 @@ const DefaultDashboard = ({ intl, match }) => {
     display: 'flex', justifyContent: 'center', alignItems: 'center',
                    transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
                    width: '6.61%', height: '6.37%',
-                   top: '61.11%',left: '13.59%',
+                   top: '62.8%',left: '13.59%',
   }
   const speaker={
     display: 'flex', justifyContent: 'center', alignItems: 'center',
@@ -117,7 +117,7 @@ const DefaultDashboard = ({ intl, match }) => {
     display: 'flex', justifyContent: 'center', alignItems: 'center',
                    transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
                    width: '6.41%', height: '3.91%',
-                   top: '69.5%',left: '13.59%',
+                   top: '70.5%',left: '13.59%',
   }
   const agenda={
     display: 'flex', justifyContent: 'center', alignItems: 'center',
@@ -129,7 +129,7 @@ const DefaultDashboard = ({ intl, match }) => {
     display: 'flex', justifyContent: 'center', alignItems: 'center',
                    transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
                    width: '6.35%', height: '4.37%',
-                   top: '63.2%',left: '78.96%',
+                   top: '64.2%',left: '78.96%',
   }
   const doc={
     display: 'flex', justifyContent: 'center', alignItems: 'center',
@@ -141,7 +141,7 @@ const DefaultDashboard = ({ intl, match }) => {
     display: 'flex', justifyContent: 'center', alignItems: 'center',
                    transform:`skew(${0}deg, ${0}deg)`,position: 'absolute',
                    width: '6.35%', height: '5.09%',
-                   top: '69.59%',left: '79.01%',
+                   top: '70.59%',left: '79.01%',
   }
   const support={
     display: 'flex', justifyContent: 'center', alignItems: 'center',
