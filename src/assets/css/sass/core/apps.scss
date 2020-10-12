@@ -99,6 +99,7 @@
 }
 
 .app-row {
+  padding-top: 20px;
   padding-right: $app-menu-width;
 
   @include respond-below(lg) {
