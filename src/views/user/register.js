@@ -49,6 +49,7 @@ const Register = ({ history, loading, error, registerUserAction }) => {
   const [name] = useState();
 
   useEffect(() => {
+    console.log("ye rha error: ",error);
     if (error && error !=='') {
       alert("Register Error: "+error)
       // NotificationManager.warning(error, 'Register Error', 3000, null, null, '');
@@ -56,12 +57,11 @@ const Register = ({ history, loading, error, registerUserAction }) => {
   }, [error]);
 
   const onUserRegister = (values) => {
-    if (name !== '' && email !== '') {
-      // console.log(values);
-      registerUserAction(values, history)
-      // history.push(adminRoot);
+    if (!loading) {
+      if (name !== '' && email !== '') {
+        registerUserAction(values, history)
+      }
     }
-    // call registerUserAction()
   };
 
   const initialValues = { name, email, password };
@@ -161,7 +161,10 @@ const Register = ({ history, loading, error, registerUserAction }) => {
     </Row>
   );
 };
-const mapStateToProps = () => { };
+const mapStateToProps = ({ authUser }) => {
+  const { loading, error } = authUser;
+  return { loading, error };
+};
 
 export default connect(mapStateToProps, {
   registerUserAction: registerUser,
