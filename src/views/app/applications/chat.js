@@ -18,6 +18,7 @@ import ChatApplicationMenu from '../../../containers/applications/ChatApplicatio
 import ChatHeading from '../../../components/applications/ChatHeading';
 import MessageCard from '../../../components/applications/MessageCard';
 import SaySomething from '../../../components/applications/SaySomething';
+import { auth, database } from '../../../helpers/Firebase';
 
 const ChatApp = ({
   intl,
@@ -72,8 +73,30 @@ const ChatApp = ({
     conversations.length
   ]);
 
+  
+
   useEffect(() => {
-    getConversationsAction(selectedUser);
+    const setOneToOneChat = (s) => {
+      if(s!=null){
+      //Check if user1’s id is less than user2's
+      console.log('uid: ,', s.uid)
+      console.log('uid@: ,', auth.currentUser.uid)
+      if (s.uid < auth.currentUser.uid) {
+        return s.uid + auth.currentUser.uid;
+      }
+      else {
+        return auth.currentUser.uid + s.uid;
+      }
+    }else {
+      return null;
+    }
+    
+    }
+    
+    const chatID = setOneToOneChat(selectedUser)
+    database.ref(`data/${chatID}`).on("child_added", async function (snapshot) {
+      getConversationsAction(selectedUser);
+    })
     focusScrollBottom();
   }, [selectedUser]);
 
@@ -94,11 +117,12 @@ const ChatApp = ({
   };
 
   const handleSendButtonClick = () => {
-    if (messageInput.length > 0) {
+    const messageInputt=messageInput.trim()
+    if (messageInputt.length > 0) {
       addMessageToConversationAction(
         currentUser.uid,
         selectedUser.uid,
-        messageInput,
+        messageInputt,
         conversations
       );
       setMessageInput('');

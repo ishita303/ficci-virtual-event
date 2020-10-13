@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import { Row } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { Colxx, Separator } from '../../../components/common/CustomBootstrap';
@@ -9,9 +10,10 @@ import { adminRoot } from '../../../constants/defaultValues';
 import Vimeo from '@u-wave/react-vimeo';
 import Tour, { STATUS } from "react-joyride";
 import login from '../../user/login';
+import { runTour } from '../../../redux/actions';
 
-const DefaultDashboard = ({ intl, match }) => {
-  const { messages } = intl;
+const DefaultDashboard = ({ intl,runTourAction, tourRun }) => {
+  // const { messages } = intl;
   const [imgi, setimgi] = useState(false);
 
   const steps = [
@@ -174,7 +176,7 @@ const DefaultDashboard = ({ intl, match }) => {
         // disableOverlay
         showProgress={true}
         steps={steps}
-        run={true}
+        run={tourRun}
         continuous={true}
         showSkipButton={true}
         floaterProps={{ disableAnimation: true }}
@@ -182,6 +184,8 @@ const DefaultDashboard = ({ intl, match }) => {
           if ([STATUS.FINISHED, STATUS.SKIPPED].includes(data.status)) {
             // this.setState({ isTouropen: false })
             // this.props.togglehometour(true);
+            console.log("skip pressed ")
+            runTourAction()
           }
         }}
       />
@@ -238,4 +242,17 @@ const DefaultDashboard = ({ intl, match }) => {
   </div>
   );
 };
-export default injectIntl(DefaultDashboard);
+const mapStateToProps = ({ authUser }) => {
+  const {
+    tourRun
+  } = authUser;
+
+  return {
+    tourRun
+  };
+};
+export default injectIntl(
+  connect(mapStateToProps, {
+    runTourAction: runTour
+  })(DefaultDashboard)
+);
