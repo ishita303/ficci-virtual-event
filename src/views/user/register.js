@@ -74,12 +74,23 @@ const Register = ({ history, loading, error, registerUserAction }) => {
             <p className="text-white h2">FICCI CAPAM-2020</p>
             <p className="white mb-0">
               Please use this form to register. <br />
-              If you are a member, please{' '}
-              <NavLink to="/user/login" className="white">
-                LOGIN
-              </NavLink>
-              .
-            </p>
+              If you are a member, please{' '}</p><br/>
+              <Button
+                color="primary"
+                className={`btn-shadow btn-multiple-state ${
+                  loading ? 'show-spinner' : ''
+                }`}
+                size="lg"
+              >
+                <span className="spinner d-inline-block">
+                  <span className="bounce1" />
+                  <span className="bounce2" />
+                  <span className="bounce3" />
+                </span>
+                <NavLink to="/user/login" className="white">
+                  LOGIN
+                </NavLink>
+              </Button>
           </div>
           <div className="form-side">
             <NavLink to="/" className="white">
