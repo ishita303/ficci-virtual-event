@@ -1,4 +1,5 @@
 import {
+  RUN_TOUR,
   LOGIN_USER,
   LOGIN_USER_SUCCESS,
   LOGOUT_USER,
@@ -13,6 +14,10 @@ import {
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_ERROR,
 } from '../actions';
+
+export const runTour=()=>({
+  type: RUN_TOUR,
+})
 
 export const loginUser = (user, history) => ({
   type: LOGIN_USER,

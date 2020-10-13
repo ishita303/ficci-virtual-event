@@ -8,6 +8,7 @@ import 'firebase/analytics';
 // import { useAuthState } from 'react-firebase-hooks/auth';
 // import { useCollectionData } from 'react-firebase-hooks/firestore';
 import {
+  RUN_TOUR,
   LOGIN_USER,
   REGISTER_USER,
   LOGOUT_USER,
@@ -16,6 +17,7 @@ import {
 } from '../actions';
 
 import {
+  runTour,
   loginUserSuccess,
   loginUserError,
   registerUserSuccess,
@@ -31,6 +33,10 @@ import { setCurrentUser } from '../../helpers/Utils';
 
 export function* watchLoginUser() {
   yield takeEvery(LOGIN_USER, loginWithEmailPassword);
+}
+
+const changeTourRun= ()=>{
+  runTour();
 }
 
 const firestore = firebase.firestore();
@@ -209,6 +215,7 @@ function* resetPassword({ payload }) {
   }
 }
 
+export {changeTourRun}
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),

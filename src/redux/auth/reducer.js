@@ -1,4 +1,5 @@
 import {
+  RUN_TOUR,
   LOGIN_USER,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
@@ -24,10 +25,14 @@ const INIT_STATE = {
   resetPasswordCode: '',
   loading: false,
   error: '',
+  tourRun: true,
 };
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {
+    case RUN_TOUR:
+      return {...state, tourRun:false}
+
     case LOGIN_USER:
       return { ...state, loading: true, error: '' };
     case LOGIN_USER_SUCCESS:
