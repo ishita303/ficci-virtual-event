@@ -73,7 +73,7 @@ const ChatApp = ({
     conversations.length
   ]);
 
-  
+
 
   useEffect(() => {
     const setOneToOneChat = (s) => {
@@ -90,9 +90,9 @@ const ChatApp = ({
     }else {
       return null;
     }
-    
+
     }
-    
+
     const chatID = setOneToOneChat(selectedUser)
     database.ref(`data/${chatID}`).on("child_added", async function (snapshot) {
       getConversationsAction(selectedUser);

@@ -3,7 +3,7 @@
   .modal-body,
   .modal-footer {
     max-width: 800px !important;
-    padding: 1.75rem;
+    padding: 1.5rem;
   }
 
   .modal-header {
@@ -15,7 +15,6 @@
   }
 
   .close {
-    color: $primary-color;
     text-shadow: initial;
   }
 }
@@ -39,7 +38,7 @@
     margin-top: 0;
     margin-bottom: 0;
     height: 100%;
-    max-width: 380px;
+    max-width: 400px;
   }
 
   .modal-content {
@@ -47,7 +46,7 @@
   }
 
   .modal-header {
-    height: $navbar-height;
+    height: calc(#{$navbar-height} - 5%);
 
     @include respond-below(xl) {
       height: $navbar-height-lg;
