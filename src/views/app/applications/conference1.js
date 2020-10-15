@@ -76,7 +76,7 @@ const DefaultConference = ({ intl, match }) => {
 		 overflow:"hidden",
 	 }
 
-    return (
+    return vidLoad ? (
 	    <>
 		    <div>
 			    <img height="100%" width="100%" style={image2} src="https://ficci-capam.framez.sg/images/audi3.jpg" />
@@ -101,7 +101,13 @@ const DefaultConference = ({ intl, match }) => {
 	        </ModalBody>
 	        </Modal>
 		   	</div>
-			</>
+				</>
+			) : (
+				<div>
+					<video autoPlay="true" onEnded={() => setLoad({isLoaded: true})} style={vidiloadi}>
+						<source src={'https://ficci-capam.framez.sg/lobbyvideo/help_to_audi.mp4'} type="video/mp4" />
+					</video>
+				</div>
 	);
 };
 

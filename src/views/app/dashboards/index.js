@@ -8,6 +8,9 @@ const DashboardDefault = React.lazy(() =>
 const AnalyticsDefault = React.lazy(() =>
   import(/* webpackChunkName: "dashboard-analytics" */ './analytics')
 );
+const Analytics = React.lazy(() =>
+  import(/* webpackChunkName: "dashboard-analytics" */ './analytics1')
+);
 const Content = React.lazy(() =>
   import(/* webpackChunkName: "dashboard-profile" */ './profile')
 );
@@ -23,6 +26,10 @@ const Dashboards = ({ match }) => (
       <Route
         path={`${match.url}/analytics`}
         render={(props) => <AnalyticsDefault {...props} />}
+      />
+      <Route
+        path={`${match.url}/analytics1`}
+        render={(props) => <Analytics {...props} />}
       />
       <Route
         path={`${match.url}/profile`}

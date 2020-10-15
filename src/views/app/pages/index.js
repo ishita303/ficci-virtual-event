@@ -11,7 +11,7 @@ const BlogList2 = React.lazy(() =>
 const PagesBlog = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>
     <Switch>
-      <Redirect exact from={`${match.url}/`} to={`${match.url}/blog-list`} />
+      <Redirect exact from={`${match.url}/`} to={`${match.url}/doc-lib`} />
       <Route
         path={`${match.url}/doc-lib`}
         render={(props) => <BlogList {...props} />}

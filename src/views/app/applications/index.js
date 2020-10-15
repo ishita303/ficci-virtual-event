@@ -7,6 +7,9 @@ const Todo = React.lazy(() =>
 const Conference = React.lazy(() =>
   import(/* webpackChunkName: "application-conference" */ './conference')
 );
+const Conference1 = React.lazy(() =>
+  import(/* webpackChunkName: "application-conference" */ './conference1')
+);
 const Speaker = React.lazy(() =>
   import(/* webpackChunkName: "application-speaker" */ './speaker')
 );
@@ -24,6 +27,11 @@ const Applications = ({ match }) => (
       <Route
         path={`${match.url}/conference`}
         render={(props) => <Conference {...props} />}
+        isExact
+      />
+      <Route
+        path={`${match.url}/conference1`}
+        render={(props) => <Conference1 {...props} />}
         isExact
       />
       <Route

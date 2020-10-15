@@ -83,7 +83,7 @@ const BlankPage = ({ match }) => {
        </div>
        </NavLink>
 
-       <NavLink to={`${adminRoot}/pages/blog/blog-list`}>
+       <NavLink to={`${adminRoot}/pages/doc-lib`}>
        <div style={doc}>
          <span className="blinkingdot"></span>
        </div>

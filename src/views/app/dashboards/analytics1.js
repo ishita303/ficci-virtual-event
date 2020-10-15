@@ -49,8 +49,8 @@ const DashboardAnalytics = ({ intl, match }) => {
     transform: "skew(0deg, 0deg)",
     position: "absolute",
     width: "19.84%",
-    height: "25%",
-    top: "20.2%",
+    height: "22%",
+    top: "21%",
     left: "39.84%"}
 
    let slido={
@@ -74,7 +74,7 @@ const DashboardAnalytics = ({ intl, match }) => {
        overflow:"hidden",
      }
 
-  return (
+  return vidLoad ? (
 	   <>
       <div style={image1}>
        <img height="100%" width="100%" style={image1} src="https://ficci-capam.framez.sg/images/lounge.jpg" alt="lounge"/>
@@ -100,6 +100,12 @@ const DashboardAnalytics = ({ intl, match }) => {
 	        </Modal>
       </div>
     </>
-  );
+    ) : (
+      <div>
+        <video autoPlay="true" onEnded={() => setLoad({isLoaded: true})} style={vidiloadi}>
+          <source src={'https://ficci-capam.framez.sg/lobbyvideo/help_to_lounge.mp4'} type="video/mp4" />
+        </video>
+      </div>
+    );
 };
 export default injectIntl(DashboardAnalytics);

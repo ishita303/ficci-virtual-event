@@ -191,14 +191,14 @@ const DefaultDashboard = ({ intl,runTourAction, tourRun }) => {
       />
 
       <div style={constyle1} id='t3' alt="conference"/>
-      <NavLink to={`${adminRoot}/applications/conference`} alt="conference">
+      <NavLink to={`${adminRoot}/applications/conference1`} alt="conference">
       <div style={constyle} alt="conference">
         <span className="blinkingdot" alt="conference"></span>
       </div>
       </NavLink>
 
       <div style={lounge1} id='t4'/>
-      <NavLink to={`${adminRoot}/dashboards/analytics`} alt="lounge">
+      <NavLink to={`${adminRoot}/dashboards/analytics1`} alt="lounge">
       <div style={lounge}>
         <span className="blinkingdot"></span>
       </div>
@@ -226,7 +226,7 @@ const DefaultDashboard = ({ intl,runTourAction, tourRun }) => {
       </NavLink>
 
       <div style={doc1} id='a5'/>
-      <NavLink to={`${adminRoot}/pages/blog/blog-list`} alt="blog">
+      <NavLink to={`${adminRoot}/pages/doc-lib`} alt="document">
       <div style={doc}>
         <span className="blinkingdot"></span>
       </div>
