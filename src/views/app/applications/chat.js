@@ -35,7 +35,7 @@ const ChatApp = ({
   changeConversationAction,
   addMessageToConversationAction,
 }) => {
-  const [activeTab, setActiveTab] = useState('messages');
+  const [activeTab, setActiveTab] = useState('contacts');
   const [messageInput, setMessageInput] = useState('');
   const scrollBarRef = useRef(null);
   useEffect(() => {
@@ -110,7 +110,7 @@ const ChatApp = ({
           conversations
         );
         setMessageInput('');
-        setActiveTab('messages');
+        setActiveTab('contacts');
         focusScrollBottom();
       }
     }
@@ -126,7 +126,7 @@ const ChatApp = ({
         conversations
       );
       setMessageInput('');
-      setActiveTab('messages');
+      setActiveTab('contacts');
       focusScrollBottom();
     }
   };

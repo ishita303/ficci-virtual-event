@@ -4,7 +4,7 @@ import { NavLink } from 'reactstrap';
 
 const ApplicationMenu = ({ children }) => {
   const containerRef = useRef();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleDocumentClick = (e) => {
     if (isOpen) {
