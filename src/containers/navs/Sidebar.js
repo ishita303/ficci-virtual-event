@@ -312,10 +312,10 @@ class Sidebar extends Component {
     const hasSubMenu = menuItem.subs && menuItem.subs.length > 0;
     this.props.changeSelectedMenuHasSubItems(hasSubMenu);
     if (1) {
-      this.setState({
-        viewingParentMenu: selectedParent,
-        selectedParentMenu: selectedParent,
-      });
+      // this.setState({
+      //   viewingParentMenu: selectedParent,
+      //   selectedParentMenu: selectedParent,
+      // });
       this.toggle();
     } else {
       e.preventDefault();
