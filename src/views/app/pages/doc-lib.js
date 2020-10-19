@@ -113,12 +113,14 @@ const BlogList = ({ match }) => {
                 </div>
                 </ModalBody>
                 <ModalFooter>
+                <NavLink to="../dashboards/default">
                   <Button
                     color="secondary"
                     onClick={() => setModalLarge1(false)}
                   >
                     Cancel
                   </Button>
+                  </NavLink>
                 </ModalFooter>
               </Modal>
       </div>
