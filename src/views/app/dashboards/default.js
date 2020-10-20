@@ -191,53 +191,54 @@ const DefaultDashboard = ({ intl,runTourAction, tourRun }) => {
       />
 
       <div style={constyle1} id='t3' alt="conference"/>
-      <NavLink to={`${adminRoot}/applications/conference1`} alt="conference">
+      <a href={`${adminRoot}/applications/conference1`} alt="conference">
       <div style={constyle} alt="conference">
         <span className="blinkingdot" alt="conference"></span>
       </div>
-      </NavLink>
+      </a>
 
       <div style={lounge1} id='t4'/>
-      <NavLink to={`${adminRoot}/dashboards/analytics1`} alt="lounge">
+      <a href={`${adminRoot}/dashboards/analytics1`} alt="lounge">
       <div style={lounge}>
         <span className="blinkingdot"></span>
       </div>
-      </NavLink>
+      </a>
 
       <div style={hdstyle1} id='t2'/>
-      <NavLink to={`${adminRoot}/ui/help`} alt="help">
+      <a href={`${adminRoot}/ui/help`} alt="help">
       <div style={hdstyle}>
         <span className="blinkingdot"></span>
       </div>
-      </NavLink>
+      </a>
 
       <div style={speaker1} id='t6'/>
-      <NavLink to={`${adminRoot}/applications/speaker`} alt="speakers">
+      <a href={`${adminRoot}/applications/speaker`}>
       <div style={speaker}>
         <span className="blinkingdot"></span>
       </div>
-      </NavLink>
+      </a>
+      
 
       <div style={agenda1} id='t5'/>
-      <NavLink to={`${adminRoot}/applications/todo`} alt="agenda">
+      <a href={`${adminRoot}/applications/todo`} alt="agenda">
       <div style={agenda}>
         <span className="blinkingdot"></span>
       </div>
-      </NavLink>
+      </a>
 
       <div style={doc1} id='a5'/>
-      <NavLink to={`${adminRoot}/pages/doc-lib`} alt="document">
+      <a href={`${adminRoot}/pages/doc-lib`} alt="document">
       <div style={doc}>
         <span className="blinkingdot"></span>
       </div>
-      </NavLink>
+      </a>
 
       <div style={support1} id='a6'/>
-      <NavLink to={`${adminRoot}/ui/faq`} alt="faq">
+      <a href={`${adminRoot}/ui/faq`} alt="faq">
       <div style={support}>
         <span className="blinkingdot"></span>
       </div>
-      </NavLink>
+      </a>
   </div>
   </div>
   );
