@@ -1,21 +1,21 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { injectIntl } from 'react-intl';
-import { Nav, TabContent, TabPane, CardHeader, NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import classnames from 'classnames';
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { injectIntl } from "react-intl";
+import { Nav, TabContent, TabPane, CardHeader, NavItem } from "reactstrap";
+import { NavLink } from "react-router-dom";
+import PerfectScrollbar from "react-perfect-scrollbar";
+import classnames from "classnames";
 
-import IntlMessages from '../../helpers/IntlMessages';
-import ApplicationMenu from '../../components/common/ApplicationMenu';
+import IntlMessages from "../../helpers/IntlMessages";
+import ApplicationMenu from "../../components/common/ApplicationMenu";
 
 import {
   changeConversation,
   createConversation,
   searchContact,
-} from '../../redux/actions';
-import { auth } from '../../helpers/Firebase';
+} from "../../redux/actions";
+import { auth } from "../../helpers/Firebase";
 
 const ChatApplicationMenu = ({
   intl,
@@ -32,18 +32,18 @@ const ChatApplicationMenu = ({
   createConversationAction,
   searchContactAction,
 }) => {
-  const [searchKey, setSearchKey] = useState('');
+  const [searchKey, setSearchKey] = useState("");
 
   const handleSearchContact = (keyword) => {
     setSearchKey(keyword);
 
     if (keyword.length > 0) {
-      if (activeTab !== 'contacts') {
-        toggleAppMenu('contacts');
+      if (activeTab !== "contacts") {
+        toggleAppMenu("contacts");
       }
       searchContactAction(keyword);
     } else {
-      searchContactAction('');
+      searchContactAction("");
     }
   };
 
@@ -51,14 +51,14 @@ const ChatApplicationMenu = ({
     if (activeTab !== tab) {
       toggleAppMenu(tab);
     }
-    if (tab === 'messages') {
-      handleSearchContact('');
+    if (tab === "messages") {
+      handleSearchContact("");
     }
   };
 
   const handleConversationClick = (e, selectedUserId) => {
     changeConversationAction(selectedUserId);
-    handleSearchContact('');
+    handleSearchContact("");
   };
 
   const handleContactClick = (userData) => {
@@ -66,15 +66,14 @@ const ChatApplicationMenu = ({
     //   toggleAppMenu('messages');
     //   searchContactAction('');
     // }
-    console.log('userData', userData);
-    if (userData.uid === auth.currentUser.uid) { }
-    else
-      changeConversationAction(userData);
+    console.log("userData", userData);
+    if (userData.uid === auth.currentUser.uid) {
+    } else changeConversationAction(userData);
 
     // const conversation = conversations.find(
     //   (x) => x.users.includes(currentUser.id) && x.users.includes(userId)
     // );
-    // console.log(conversations); 
+    // console.log(conversations);
     // if (conversation) {
     //   changeConversationAction(userId);
     // } else {
@@ -89,28 +88,15 @@ const ChatApplicationMenu = ({
     <ApplicationMenu>
       <CardHeader className="pl-0 pr-0">
         <Nav tabs className="card-header-tabs ml-0 mr-0">
-          {/* <NavItem className="w-50 text-center">
-            <NavLink
-              to="#"
-              location={{}}
-              className={classnames({
-                active: activeTab === 'messages',
-                'nav-link': true,
-              })}
-              onClick={() => toggleMenu('messages')}
-            >
-              <IntlMessages id="chat.messages" />
-            </NavLink>
-          </NavItem> */}
           <NavItem className="w-50 text-center">
             <NavLink
               to="#"
               location={{}}
               className={classnames({
-                active: activeTab === 'contacts',
-                'nav-link': true,
+                active: activeTab === "contacts",
+                "nav-link": true,
               })}
-              onClick={() => toggleAppMenu('contacts')}
+              onClick={() => toggleAppMenu("contacts")}
             >
               <IntlMessages id="chat.contacts" />
             </NavLink>
@@ -123,7 +109,7 @@ const ChatApplicationMenu = ({
           <input
             type="text"
             className="form-control rounded"
-            placeholder={messages['menu.search']}
+            placeholder={messages["menu.search"]}
             value={searchKey}
             onChange={(e) => handleSearchContact(e.target.value)}
           />
@@ -134,42 +120,39 @@ const ChatApplicationMenu = ({
       >
         <div className="pt-2 pr-4 pl-4 pb-2">
           {console.log("contactsMenu: ", allContacts)}
-          {
-            allContacts
-              .map((item, index) => {
-                return item.map((item, index) => {
-                  if (item.uid === auth.currentUser.uid) return null
-                  return (
-                    <div
-                      key={index}
-                      className="d-flex flex-row mb-3 border-bottom pb-3"
-                    >
-                      <NavLink
-                        className="d-flex"
-                        to="#"
-                        location={{}}
-                        onClick={() => handleContactClick(item)}
-                      >
-                        <img
-                          alt={item.name}
-                          src="/assets/img/profiles/l-1.jpg"
-                          className="img-thumbnail border-0 rounded-circle mr-3 list-thumbnail align-self-center xsmall"
-                        />
-                        <div className="d-flex flex-grow-1 min-width-zero">
-                          <div className="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero">
-                            <div className="min-width-zero">
-                              <p className="mb-0 truncate">{item.name}</p>
-                            </div>
-                          </div>
+          {allContacts.map((item, index) => {
+            return item.map((item, index) => {
+              if (item.uid === auth.currentUser.uid) return null;
+              return (
+                <div
+                  key={index}
+                  className="d-flex flex-row mb-3 border-bottom pb-3"
+                >
+                  <NavLink
+                    className="d-flex"
+                    to="#"
+                    location={{}}
+                    onClick={() => handleContactClick(item)}
+                  >
+                    <img
+                      alt={item.name}
+                      src="/assets/img/profiles/l-1.jpg"
+                      className="img-thumbnail border-0 rounded-circle mr-3 list-thumbnail align-self-center xsmall"
+                    />
+                    <div className="d-flex flex-grow-1 min-width-zero">
+                      <div className="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero">
+                        <div className="min-width-zero">
+                          <p className="mb-0 truncate">{item.name}</p>
                         </div>
-                      </NavLink>
+                      </div>
                     </div>
-                  );
-                })
-              })}
+                  </NavLink>
+                </div>
+              );
+            });
+          })}
         </div>
       </PerfectScrollbar>
-
     </ApplicationMenu>
   );
 };
