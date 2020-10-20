@@ -14,6 +14,9 @@ const ForgotPassword = React.lazy(() =>
 const ResetPassword = React.lazy(() =>
   import(/* webpackChunkName: "user-reset-password" */ './reset-password')
 );
+const Chat = React.lazy(() =>
+  import(/* webpackChunkName: "chat" */ './chat')
+);
 
 const User = ({ match }) => {
   return (
@@ -36,6 +39,10 @@ const User = ({ match }) => {
           <Route
             path={`${match.url}/reset-password`}
             render={(props) => <ResetPassword {...props} />}
+          />
+          <Route
+            path={`${match.url}/chat`}
+            render={(props) => <Chat {...props} />}
           />
           <Redirect to="/error" />
         </Switch>

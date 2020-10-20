@@ -30,6 +30,7 @@ const ApplicationMenu = ({ children }) => {
 
   return (
     <div
+      style={{ marginTop:"-17.5%",height: `${isOpen ? "100%" : "auto"}`,width: `${isOpen ? "100%" : "auto"}` }}
       ref={containerRef}
       className={`app-menu ${isOpen ? "shown" : ""}`}
     >

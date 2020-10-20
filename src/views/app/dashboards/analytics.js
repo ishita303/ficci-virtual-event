@@ -95,7 +95,7 @@ const DashboardAnalytics = ({ intl, match }) => {
 					</Button>
 					</ModalHeader>
 	        <ModalBody>
-						<iframe src="../applications/chat" height="100%" width="100%" style={slido}/>
+						<iframe src="../../user/chat" height="100%" width="100%" style={slido}/>
 	        </ModalBody>
 	        </Modal>
       </div>

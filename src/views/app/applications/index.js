@@ -13,9 +13,9 @@ const Conference1 = React.lazy(() =>
 const Speaker = React.lazy(() =>
   import(/* webpackChunkName: "application-speaker" */ './speaker')
 );
-const Chat = React.lazy(() =>
-  import(/* webpackChunkName: "application-speaker" */ './chat')
-);
+// const Chat = React.lazy(() =>
+//   import(/* webpackChunkName: "application-speaker" */ './chat')
+// );
 const Applications = ({ match }) => (
   <Suspense fallback={<div className="loading" />}>
     <Switch>
@@ -38,10 +38,10 @@ const Applications = ({ match }) => (
         path={`${match.url}/speaker`}
         render={(props) => <Speaker {...props} />}
       />
-      <Route
+      {/* <Route
         path={`${match.url}/chat`}
         render={(props) => <Chat {...props} />}
-      />
+      /> */}
       <Redirect to="/error" />
     </Switch>
   </Suspense>
