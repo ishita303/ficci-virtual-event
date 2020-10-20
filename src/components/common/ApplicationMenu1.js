@@ -10,7 +10,7 @@ const ApplicationMenu = ({ children }) => {
     if (isOpen) {
       const container = containerRef.current;
       if (container.contains(e.target) || container === e.target) {
-        return;
+        // return;
       }
       setIsOpen(false);
     }
