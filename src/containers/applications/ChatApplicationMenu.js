@@ -177,14 +177,7 @@ const ChatApplicationMenu = ({
                          
                     </div>
                   </NavLink>
-                  <NavLink
-                    className="d-flex"
-                    to="#"
-                    location={{}}
-                    onClick={() => {setModalSmall(false)}}
-                  >
-                      <i className='simple-icon-credit-card' />
-                      </NavLink>
+                      <i className='simple-icon-credit-card' onClick={() => {setModalSmall(false)}} />
                 </div>
               );
             });
