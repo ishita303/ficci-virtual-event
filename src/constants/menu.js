@@ -41,6 +41,13 @@ const data = [
     // roles: [UserRole.Admin, UserRole.Editor],
   },
   {
+    id: 'cards',
+    icon: 'simple-icon-credit-card',
+    label: 'Cards',
+    to: `${adminRoot}/dashboards/bcards`,
+    // roles: [UserRole.Admin, UserRole.Editor],
+  },
+  {
     id: 'pages',
     icon: 'iconsminds-library',
     label: 'Resources',

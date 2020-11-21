@@ -8,6 +8,9 @@ const DashboardDefault = React.lazy(() =>
 const AnalyticsDefault = React.lazy(() =>
   import(/* webpackChunkName: "dashboard-analytics" */ './analytics')
 );
+const CardsDefault = React.lazy(() =>
+  import(/* webpackChunkName: "dashboard-analytics" */ './bcards')
+);
 const Analytics = React.lazy(() =>
   import(/* webpackChunkName: "dashboard-analytics" */ './analytics1')
 );
@@ -26,6 +29,10 @@ const Dashboards = ({ match }) => (
       <Route
         path={`${match.url}/analytics`}
         render={(props) => <AnalyticsDefault {...props} />}
+      />
+      <Route
+        path={`${match.url}/bcards`}
+        render={(props) => <CardsDefault {...props} />}
       />
       <Route
         path={`${match.url}/analytics1`}
