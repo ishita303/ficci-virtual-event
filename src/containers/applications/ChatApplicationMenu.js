@@ -2,7 +2,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { injectIntl } from "react-intl";
-import { Nav, TabContent, TabPane, CardHeader, NavItem } from "reactstrap";
+import { Nav, TabContent, TabPane, CardHeader, NavItem,Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter, } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import classnames from "classnames";
@@ -16,6 +20,9 @@ import {
   searchContact,
 } from "../../redux/actions";
 import { auth } from "../../helpers/Firebase";
+
+const [modalSmall, setModalSmall] = useState(false);
+
 
 const ChatApplicationMenu = ({
   intl,
@@ -86,6 +93,28 @@ const ChatApplicationMenu = ({
 
   return (
     <ApplicationMenu>
+    <Modal
+                isOpen={modalSmall}
+                toggle={() => setModalSmall(!modalSmall)}
+                style={{maxWidth: "800px"}}
+              >
+                <ModalHeader>
+                  Business Card
+                </ModalHeader>
+                <ModalBody>
+                -------Description-------
+                </ModalBody>
+                <ModalFooter>
+                <NavLink to="../dashboards/default">
+                  <Button
+                    color="secondary"
+                    onClick={() => setModalSmall(false)}
+                  >
+                    Cancel
+                  </Button>
+                  </NavLink>
+                </ModalFooter>
+              </Modal>
       <CardHeader className="pl-0 pr-0">
         <Nav tabs className="card-header-tabs ml-0 mr-0">
           <NavItem className="w-50 text-center">
@@ -145,6 +174,14 @@ const ChatApplicationMenu = ({
                           <p className="mb-0 truncate">{item.name}</p>
                         </div>
                       </div>
+                      <NavLink
+                    className="d-flex"
+                    to="#"
+                    location={{}}
+                    onClick={() => {setModalSmall(false)}}
+                  >
+                      <i className='simple-icon-credit-card' />
+                      </NavLink>   
                     </div>
                   </NavLink>
                 </div>
