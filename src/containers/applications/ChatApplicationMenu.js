@@ -21,7 +21,6 @@ import {
 } from "../../redux/actions";
 import { auth } from "../../helpers/Firebase";
 
-const [modalSmall, setModalSmall] = useState(false);
 
 
 const ChatApplicationMenu = ({
@@ -40,6 +39,7 @@ const ChatApplicationMenu = ({
   searchContactAction,
 }) => {
   const [searchKey, setSearchKey] = useState("");
+  const [modalSmall, setModalSmall] = useState(false);
 
   const handleSearchContact = (keyword) => {
     setSearchKey(keyword);
