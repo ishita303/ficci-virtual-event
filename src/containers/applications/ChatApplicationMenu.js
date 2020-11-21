@@ -174,16 +174,17 @@ const ChatApplicationMenu = ({
                           <p className="mb-0 truncate">{item.name}</p>
                         </div>
                       </div>
-                      <NavLink
+                         
+                    </div>
+                  </NavLink>
+                  <NavLink
                     className="d-flex"
                     to="#"
                     location={{}}
                     onClick={() => {setModalSmall(false)}}
                   >
                       <i className='simple-icon-credit-card' />
-                      </NavLink>   
-                    </div>
-                  </NavLink>
+                      </NavLink>
                 </div>
               );
             });
