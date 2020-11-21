@@ -177,7 +177,7 @@ const ChatApplicationMenu = ({
                          
                     </div>
                   </NavLink>
-                      <i className='simple-icon-credit-card' onClick={() => {setModalSmall(false)}} />
+                      <i className='simple-icon-credit-card' onClick={() => {setModalSmall(true)}} />
                 </div>
               );
             });
