@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <NavLink to='./user/login'>
       <div style={image}>
-        <img style={image} height="100%" width="100%" src="https://ficci-capam.framez.sg/static/media/beforelogin.7768c518.jpg" />
+        <img style={image} height="100%" width="100%" src="https://www.digitalstudioindia.com/public/images/2020/08/28/ficci.jpg" />
       </div>
     </NavLink>
   )
